@@ -7,7 +7,7 @@ class App extends Component {
     super()
 
     this.state = {
-      text: ''
+      text: "hello"
     }
   }
 
@@ -17,13 +17,11 @@ class App extends Component {
     })
   }
 
-
-
   render() {
     return (
       <div className="App">
-       <input className="textBox" onChange={e => this.updateText(e.target.value)}/>
-       <p>{this.state.text}</p>
+        <input onChange={e => this.updateText(e.target.value)} value={this.state.text}/>
+        <p>{this.state.text}</p>
       </div>
     );
   }

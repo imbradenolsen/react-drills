@@ -3,16 +3,33 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(){
+    super()
+
+    this.state = {
+      foods: ["Apple", "Banana", "Orange", "Pear", "Plum"],
+      text: ''
+    }
+  }
+
+  handleChange(value){
+    this.setState({
+      text: value
+    })
+  }
+
   render() {
+    const filteredArray = this.state.foods.filter((element) => {
+      return element.includes(this.state.text)
+    })
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        {filteredArray.map(element => {
+          return (
+            <h1>{element}</h1>
+          )
+        })}
+       <input onChange={event => this.handleChange(event.target.value)}/>
       </div>
     );
   }
